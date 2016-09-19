@@ -5,10 +5,10 @@ int main (void)
 {
 
 double  x_dim = 210, y_dim = 297; // Helst använda float
-	int  i, size;
-	char A;
+int  i, size;
+char A;
 
-	printf("Write size of paper:  ");
+	printf("What size between A0 and A1000 do you want to calculate?  ");
 	scanf("%c%i", &A, &size);
 
 if (size == 4){						//errors
