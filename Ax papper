@@ -1,34 +1,42 @@
+/*
+ * testlab1.c
+ *
+ *  Created on: Sep 19, 2016
+ *      Author: chrsil-5
+ */
+//isdigit(size)
 
 #include <stdio.h>
-#include <math.h>
+#include <ctype.h>
 int main (void)
 {
 
-double  x_dim = 210, y_dim = 297; // Helst använda float
-int  i, size;
-char A;
+	double  x_dim = 210, y_dim = 297;
+	int  i, size;
 
-	printf("What size between A0 and A1000 do you want to calculate?  ");
-	scanf("%c%i", &A, &size);
+	printf("Which size do you want to calculate\nA");
+	scanf("%i", &size);
 
-if (size == 4){						//errors
-		printf("%f x %f", x_dim, y_dim);
+	if (size < 0 || size > 1000) //decimaltal (punkt) & andra bokstäver
+		printf("Not a valid paper size");
+	else {
+		if (size == 4){}
+		else if (size < 4) {
+			for (i = 1 ; i <= 4-size; ++i )
+			{ if (i % 2 == 0) //If i is even --> divide x_dim
+				x_dim *= 2;
+			else
+				y_dim *= 2; // If i is odd --> divide y_dim
+				}}
+		else
+			for (i = 1; i <= size - 4; ++i) // funktion
+			{ if (i % 2 == 0)
+				x_dim /=2;
+			else
+				y_dim /=2;
+			}
+		printf("A paper of size A%i is %g x %g mm.",size, x_dim, y_dim);
 	}
-	else if (size < 4) {
-		for (i = 1 ; i <= 4-size; ++i )
-		{
-			x_dim *= 2;
-			y_dim *= 2; } }
-	else
-		for (i = 1; i <= size - 4; ++i)
-		{
-			 x_dim /=2;
-			 y_dim /=2;
-		}
-
-	printf("%g x %g", x_dim, y_dim);
 
 	return 0;
 }
-
-
