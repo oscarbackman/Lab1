@@ -1,0 +1,65 @@
+/*
+ * papersize.c
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: chrsil-5
+ */
+#if 1
+
+#include <stdio.h>
+/*
+Program will calculate the size of an Ax paper in mm.
+ */
+
+int main (void)
+//Main function, checks if the input is valid.
+
+{
+
+	char a;
+	int size;
+	printf("Which size do you want to calculate?\nA");
+	scanf("%i%c",&size, &a);
+
+	if (a ==10 ){    		//asciii code för enter
+		calculateDimensions(size);
+	}
+	else
+		printf("Bad input: Only numbers between 0 and 1000 are valid:");
+
+	return 0;
+}
+
+
+int calculateDimensions(int size){
+	//Function which calculates the size of the Ax paper
+
+
+	double  xDim = 210, yDim = 297;
+	int i;
+
+	if (size < 0 || size > 1000)
+		printf("Bad input: Only numbers between 0 and 1000 are valid.\n");
+	else {
+		if (size == 4){}
+		else if (size < 4) {
+			for (i = 1 ; i <= 4-size; ++i )
+			{ if (i % 2 == 0) //If i is even --> divide xDim
+				xDim *= 2;
+			else
+				yDim *= 2; // If i is odd --> divide yDim
+			}
+		}
+		else
+			for (i = 1; i <= size - 4; ++i)
+			{ if (i % 2 == 0)
+				xDim /=2;
+			else
+				yDim /=2;
+			}
+		printf("A paper of size A%i is %g x %g mm.",size, xDim, yDim);
+
+	}
+	return 0;
+}
+#endif
